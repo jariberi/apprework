@@ -1,0 +1,12 @@
+/__init__.pyc
+/barcodes.pyc
+/base.pyc
+/cache.pyc
+/charts.pyc
+/cross_reference.pyc
+/exceptions.pyc
+/graphics.pyc
+/models.pyc
+/utils.pyc
+/version.pyc
+/widgets.pyc
