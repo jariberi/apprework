@@ -5,11 +5,15 @@ try:
 except NameError: 
     from sets import Set as set     # Python 2.3 fallback 
 
+from excep import NotYetImplemented, ObjectNotFound, ManyObjectsFound,\
+    AttributeNotFound, EmptyQueryset
+    
 from utils import calculate_size, get_attr_value, landscape, format_date, memoize,\
         BAND_WIDTH, BAND_HEIGHT, CROSS_COLS, CROSS_ROWS, cm, A4, black, TA_LEFT, TA_CENTER,\
         TA_RIGHT
-from exceptions import EmptyQueryset, ObjectNotFound, ManyObjectsFound,\
-        AttributeNotFound, NotYetImplemented
+
+#from exceptions import EmptyQueryset, ObjectNotFound, ManyObjectsFound,\
+#        AttributeNotFound, NotYetImplemented
 from cache import DEFAULT_CACHE_STATUS, CACHE_BACKEND, CACHE_FILE_ROOT
 
 class GeraldoObject(object):

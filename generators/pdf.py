@@ -1,5 +1,5 @@
 import datetime, os
-from base import ReportGenerator
+from generators.base_gen import ReportGenerator
 
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.lib.styles import ParagraphStyle
@@ -20,14 +20,14 @@ except ImportError:
 
 DEFAULT_TEMP_DIR = '/tmp/'
 
-from geraldo.utils import get_attr_value, calculate_size
-from geraldo.widgets import Widget, Label, SystemField
-from geraldo.graphics import Graphic, RoundRect, Rect, Line, Circle, Arc,\
+from utils import get_attr_value, calculate_size
+from widgets import Widget, Label, SystemField
+from graphics import Graphic, RoundRect, Rect, Line, Circle, Arc,\
         Ellipse, Image
-from geraldo.barcodes import BarCode
-from geraldo.cache import make_hash_key, get_cache_backend, CACHE_DISABLED
-from geraldo.charts import BaseChart
-from geraldo.exceptions import AbortEvent
+from barcodes import BarCode
+from cache import make_hash_key, get_cache_backend, CACHE_DISABLED
+from charts import BaseChart
+from excep import AbortEvent
 
 class PDFGenerator(ReportGenerator):
     """This is a generator to output a PDF using ReportLab library with

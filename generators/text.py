@@ -1,12 +1,12 @@
 import datetime
-from base import ReportGenerator
+from generators.base_gen import ReportGenerator
 
-from geraldo.base import cm, TA_CENTER, TA_RIGHT
-from geraldo.utils import get_attr_value, calculate_size
-from geraldo.widgets import Widget, Label, SystemField
-from geraldo.graphics import Graphic, RoundRect, Rect, Line, Circle, Arc,\
+from base import cm, TA_CENTER, TA_RIGHT
+from utils import get_attr_value, calculate_size
+from widgets import Widget, Label, SystemField
+from graphics import Graphic, RoundRect, Rect, Line, Circle, Arc,\
         Ellipse, Image
-from geraldo.exceptions import AbortEvent
+from excep import AbortEvent
 
 # In development
 

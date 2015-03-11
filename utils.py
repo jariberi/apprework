@@ -14,7 +14,7 @@ else:
     from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_RIGHT # Check this also
     from reportlab.lib.colors import black
 
-from exceptions import AttributeNotFound
+from excep import AttributeNotFound
 
 try:
     from functools import wraps

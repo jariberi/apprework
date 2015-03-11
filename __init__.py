@@ -1,13 +1,14 @@
 """
-Geraldo Reports Engine
+======================
+Appline Reports Framework V0.1 Beta - Based on Geraldo Reports
 ======================
 
-Overview
+Descripcion
 --------
 
-Geraldo is a reports generator created to work like ReportBuilder, QuickReport
-or Jasper Reports. It has bands with fixed width and flexible height to show on
-top, summary, page header, page footer, in table or each one for an object.
+Apprework esta basado en Geraldo, con algunas modificaciones. Pensado para funcionar
+ReportBuilder o QuickReport. Trabaja con bandas de ancho fijo y altura variable para
+mostrar informacion  de tipo encabezado, sumario, detalles, agrupaciones, etc.
 
 It is under GPL and works only with Django framework and Python language.
 
@@ -45,18 +46,8 @@ Packages Structure
 
 from version import VERSION, get_version
 
-__author__ = 'Marinho Brandao'
+__author__ = 'Jorge Riberi'
 __license__ = 'GNU Lesser General Public License (LGPL)'
 __url__ = 'http://geraldo.sourceforge.net/'
 __version__ = get_version()
-
-from base import Report, ReportBand, DetailBand, TableBand, ReportGroup,\
-        SubReport, landscape, GeraldoObject, ManyElements, CROSS_COLS
-from widgets import Label, ObjectValue, SystemField
-from widgets import FIELD_ACTION_VALUE, FIELD_ACTION_COUNT, FIELD_ACTION_AVG,\
-        FIELD_ACTION_MIN, FIELD_ACTION_MAX, FIELD_ACTION_SUM,\
-        FIELD_ACTION_DISTINCT_COUNT, BAND_WIDTH
-from graphics import RoundRect, Rect, Line, Circle, Arc, Ellipse, Image
-from exceptions import EmptyQueryset, ObjectNotFound, ManyObjectsFound, AbortEvent
-from cross_reference import CrossReferenceMatrix
 

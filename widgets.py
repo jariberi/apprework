@@ -9,7 +9,7 @@ from base import BAND_WIDTH, BAND_HEIGHT, Element, SubReport
 from utils import get_attr_value, SYSTEM_FIELD_CHOICES, FIELD_ACTION_VALUE, FIELD_ACTION_COUNT,\
         FIELD_ACTION_AVG, FIELD_ACTION_MIN, FIELD_ACTION_MAX, FIELD_ACTION_SUM,\
         FIELD_ACTION_DISTINCT_COUNT, cm, black
-from exceptions import AttributeNotFound
+from excep import AttributeNotFound
 
 class Widget(Element):
     """A widget is a value representation on the report"""

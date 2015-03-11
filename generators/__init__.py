@@ -1,4 +1,4 @@
-from base import ReportGenerator
+from generators.base_gen import ReportGenerator
 from html import HTMLGenerator
 from xmlstruct import XMLStructGenerator
 from pdf import PDFGenerator
