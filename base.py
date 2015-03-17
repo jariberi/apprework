@@ -28,6 +28,7 @@ class GeraldoObject(object):
     parent = None
 
     def __init__(self, *kwargs):
+        print "CLASS GERALDOOBJECT // __init__"
         if 'name' in kwargs:
             self.name = kwargs.pop('name')
 
@@ -179,6 +180,7 @@ class BaseReport(GeraldoObject):
     on_new_page = None
 
     def __init__(self, queryset=None):
+        print "CLASS BASEREPORT // __init__"
         self.queryset = queryset or self.queryset
 
         if self.queryset is None:
@@ -196,7 +198,7 @@ class BaseReport(GeraldoObject):
         """Finds all band classes in the report and instantiante them. This
         is important to have a safety on separe inherited reports each one
         from other."""
-
+        print "CLASS BASEREPORT // transform_classes_to_objects"
         # Basic bands
         if self.band_begin and not isinstance(self.band_begin, ReportBand):
             self.band_begin = self.band_begin()
@@ -223,6 +225,7 @@ class BaseReport(GeraldoObject):
         
         This should be refactored in the future to support big amounts of
         objects."""
+        print "CLASS BASEREPORT // get_objects_list"
         if not self.queryset:
             return []
 
@@ -235,10 +238,11 @@ class BaseReport(GeraldoObject):
         this (until we find a better and agnosthic solution).
         
         Please don't hack this method up. Just override it on your report class."""
-
+        
         return format_date(date, expression)
 
     def get_children(self):
+        print "CLASS BASEREPORT // get_children"
         ret = []
 
         # Bands
@@ -261,6 +265,7 @@ class BaseReport(GeraldoObject):
         return ret
 
     def remove_child(self, obj):
+        print "CLASS BASEREPORT // remove_child"
         # Bands
         if obj == self.band_begin: self.band_begin = None
         if obj == self.band_summary: self.band_summary = None
@@ -279,6 +284,7 @@ class BaseReport(GeraldoObject):
                     self.borders.pop(k)
 
     def set_parent_on_children(self):
+        print "CLASS BASEREPORT // set_parent_on_children"
         # Bands
         if self.band_begin: self.band_begin.parent = self
         if self.band_summary: self.band_summary.parent = self
@@ -306,23 +312,28 @@ class BaseReport(GeraldoObject):
 
     # Events methods
     def do_before_print(self, generator):
+        print "CLASS BASEREPORT // do_before_print"
         if self.before_print:
             self.before_print(self, generator)
 
     def do_before_generate(self, generator):
+        print "CLASS BASEREPORT // do_before_generate"
         if self.before_generate:
             self.before_generate(self, generator)
 
     def do_after_print(self, generator):
+        print "CLASS BASEREPORT // do_after_print"
         if self.after_print:
             self.after_print(self, generator)
 
     def do_on_new_page(self, page, page_number, generator):
+        print "CLASS BASEREPORT // do_on_new_page"
         if self.on_new_page:
             self.on_new_page(self, page, page_number, generator)
 
     def get_variable_value(self, name, system_fields):
         """Returns the value for a given variable name"""
+        print "CLASS BASEREPORT // get_variable_value"
         return system_fields.widget.generator.variables[name]
 
 
@@ -402,13 +413,15 @@ class Report(BaseReport):
     cache_prefix = None
     cache_file_root = None
 
-    def __init__(self, queryset=None):
+    def __init__(self, queryset=None, fpn=1):
+        print "CLASS REPORT // __init__"
         super(Report, self).__init__(queryset)
 
         # Default attributes
         self.subreports = self.subreports and list(self.subreports) or []
         self.default_style = self.default_style or {}
         self.additional_fonts = self.additional_fonts or {}
+        self.first_page_number = fpn
 
         # Caching related attributes
         if self.cache_status is None:

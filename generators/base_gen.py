@@ -85,7 +85,7 @@ class ReportGenerator(GeraldoObject):
         self._groups_changed = {}
         self._groups_stack = []
 
-        self.first_page_number = first_page_number
+        self.first_page_number=report.first_page_number#self.first_page_number = first_page_number
         self.variables = variables or self.variables or {}
         self.return_pages = return_pages
 

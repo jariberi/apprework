@@ -316,6 +316,7 @@ class SystemField(Label):
             'page_count': None,
             'current_datetime': None,
             'report_author': None,
+            'page_number_1': None,
         }
 
     def __init__(self, **kwargs):
@@ -338,6 +339,7 @@ class SystemField(Label):
             'page_count': page_count,
             'current_datetime': self.fields.get('current_datetime') or datetime.datetime.now(),
             'report_author': self.fields.get('report_author') or self.report.author,
+            'page_number_1': page_number + 1 - self.generator.first_page_number
         }
         
         if self.get_value:

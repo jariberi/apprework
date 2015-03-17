@@ -79,6 +79,7 @@ class PDFGenerator(ReportGenerator):
             self.temp_file_name = datetime.datetime.now().strftime('%Y%m%d%H%M%s') + str(id(self)) + '_%s.pdf'
 
     def execute(self):
+        print "PDFGENERATOR // EXECUTE"
         """Generates a PDF file using ReportLab pdfgen package."""
         super(PDFGenerator, self).execute()
 
@@ -345,7 +346,7 @@ class PDFGenerator(ReportGenerator):
                     # Set element colors
                     self.set_fill_color(widget.font_color)
     
-                    self.generate_widget(widget, self.canvas, num)
+                    self.generate_widget(widget, self.canvas, num+1)
     
                 # Graphic element
                 elif isinstance(element, Graphic):
@@ -366,14 +367,16 @@ class PDFGenerator(ReportGenerator):
             del self.canvas
 
     def generate_widget(self, widget, canvas=None, page_number=0):
+        print "PDFGENERATOR // GENERATE_WIDGET -- PAGE_NUMBER = %s" %page_number
         """Renders a widget element on canvas"""
         if isinstance(widget, SystemField):
             # Sets system fields
             widget.fields['report_title'] = self.report.title
-            widget.fields['page_number'] = page_number + 1
+            widget.fields['page_number'] = page_number + 0
             widget.fields['page_count'] = self.get_page_count()
             widget.fields['current_datetime'] = self._generation_datetime
             widget.fields['report_author'] = self.report.author
+            widget.fields['page_number_1'] = page_number + 2 - self.first_page_number
 
         # Calls the before_print event
         try:
